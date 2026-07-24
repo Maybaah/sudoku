@@ -46,5 +46,6 @@ rejected.
 - `N` or the notes button writes pencil marks instead of digits
 - Backspace, delete or `0` clears a square; arrows move the selection
 - Duplicates in a row, column or box light up red as you go
-- The clock starts on your first entry, not on page load
+- The clock starts the moment the board is on screen, reading it is part of
+  the solve; a deal made in a background tab waits until you look at it
 - Local run history lives in `localStorage` and feeds the arcade hub cards

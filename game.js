@@ -178,12 +178,23 @@
     hTime.textContent = Arcade.fmtTime(startTs ? Date.now() - startTs : 0);
   }
 
-  /* the clock starts on the first entry, not on page load, the same way the
-     minefield is only laid out once the player commits to a square */
+  /* the clock runs from the moment the board is on screen: reading the grid is
+     part of the solve. A deal made in a background tab waits until the player
+     actually looks at it. */
   function startClock() {
     if (startTs) return;
+    if (document.hidden) {
+      document.addEventListener("visibilitychange", startClockWhenVisible);
+      return;
+    }
     startTs = Date.now();
     timerId = setInterval(tick, 100);
+  }
+
+  function startClockWhenVisible() {
+    if (document.hidden) return;
+    document.removeEventListener("visibilitychange", startClockWhenVisible);
+    startClock();
   }
 
   function buildGrid() {
@@ -392,6 +403,7 @@
     var best = Arcade.bestSudoku(diff);
     hBest.textContent = best ? Arcade.fmtTime(best.timeMs) : "none";
     paint();
+    startClock();
   }
 
   /* ── input ── */
