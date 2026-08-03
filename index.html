@@ -9,7 +9,7 @@
   <meta name="author" content="Artem Kovtoniuk" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <link rel="canonical" href="https://maybaah.github.io/sudoku/" />
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#09090b" />
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="maybaah.github.io" />
@@ -32,7 +32,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/assets/site.css" />
 
@@ -95,8 +95,8 @@
     .sq:nth-child(n+73) { border-bottom: 0; }
 
     .sq.given { color: var(--text-primary); font-weight: 600; }
-    .sq.peer { background: #131313; }
-    .sq.same { background: #1f1f1f; }
+    .sq.peer { background: #131316; }
+    .sq.same { background: #1f1f23; }
     .sq.bad { color: var(--danger); }
     .sq.sel { background: var(--bg-overlay); }
     #grid.done .sq { color: var(--success); }
@@ -105,7 +105,7 @@
     .notes {
       display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr);
       position: absolute; inset: 2px;
-      font-size: calc(var(--cell) * 0.24); font-weight: 400; color: var(--text-muted); line-height: 1;
+      font-size: calc(var(--cell) * 0.24); font-weight: 400; color: var(--text-secondary); line-height: 1;
     }
     .notes span { display: flex; align-items: center; justify-content: center; }
 
@@ -115,14 +115,14 @@
     .pad button {
       position: relative;
       width: calc(var(--cell) * 0.94); height: calc(var(--cell) * 1.1);
-      background: var(--bg-surface); border: 1px solid var(--border); border-radius: 8px;
+      background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md);
       font-family: var(--font-mono); font-size: calc(var(--cell) * 0.42); color: var(--text-primary);
       transition: border-color 150ms ease, background 150ms ease, opacity 150ms ease;
     }
     .pad button:hover { border-color: var(--border-focus); background: var(--bg-elevated); }
     .pad button .left {
       position: absolute; right: 3px; bottom: 1px;
-      font-size: 9px; color: var(--text-muted); line-height: 1;
+      font-size: 9px; color: var(--text-secondary); line-height: 1;
     }
     .pad button.spent { opacity: 0.35; }
     /* the grid and the pad are centred columns, so the row under them is too */
@@ -193,7 +193,7 @@
 
     <section class="board-embed" id="board-embed" aria-label="Global leaderboard"></section>
 
-    <p style="margin-top: 24px; font-size: 13px; color: var(--text-muted); line-height: 1.7; max-width: 64ch;">
+    <p style="margin-top: 24px; font-size: 13px; color: var(--text-secondary); line-height: 1.7; max-width: 64ch;">
       Fill every row, column and 3×3 box with the digits 1 to 9, once each. Click a
       square and type a digit, or use the pad below. Press
       <span style="color: var(--text-secondary);">N</span> or the notes button for
